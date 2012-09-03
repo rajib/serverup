@@ -1,0 +1,19 @@
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  
+  <legend>Sign up</legend>
+<%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, :required => true, :autofocus => true, :label => "Email (This will be your Username )"%>
+    <%#= f.input :name, :required => true, :label => "Full Name" -%>
+    <%= f.input :password, :required => true %>
+    <%= f.input :password_confirmation, :required => true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up", :class => 'btn-primary' %>
+    <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

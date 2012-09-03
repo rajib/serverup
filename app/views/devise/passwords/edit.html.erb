@@ -1,0 +1,20 @@
+<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), 
+:html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+
+  <legend>Change your password</legend>
+
+  <%= f.input :reset_password_token, :as => :hidden %>
+  <%= f.full_error :reset_password_token %>
+
+  <div class="form-inputs">
+    <%= f.input :password, :label => "New password", :required => true %>
+    <%= f.input :password_confirmation, :label => "Confirm your new password", :required => true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Change my password", :class => 'btn-primary' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

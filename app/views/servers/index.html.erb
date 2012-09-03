@@ -1,0 +1,35 @@
+<legend>Listing servers</legend>
+
+<table  class="table">
+  <colgroup>
+    <col class="span7">
+    <col class="span3">
+    <col class="span2">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @servers.each do |server| %>
+    <tr>
+      <td><%= server.name %></td>
+      <td>
+        <%= colourize_status server.status %>
+      </td>
+      <td>
+        <%= link_to 'Show', server %>
+        <%= link_to 'Edit', edit_server_path(server) %>
+        <%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Server', new_server_path %>
