@@ -1,1 +1,3 @@
-h1. !http://railsapps.github.com/images/rails-36x36.jpg(Rails Application for checking server status)!
+h1. !http://railsapps.github.com/images/rails-36x36.jpg
+
+(Rails Application for checking server status)!
