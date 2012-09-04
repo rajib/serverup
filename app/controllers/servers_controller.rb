@@ -4,7 +4,7 @@ class ServersController < ApplicationController
   # GET /servers
   # GET /servers.json
   def index
-    @servers = Server.all
+    @servers = current_user.servers
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class ServersController < ApplicationController
   # GET /servers/1
   # GET /servers/1.json
   def show
-    @server = Server.find(params[:id])
+    @server = current_user.servers.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +26,7 @@ class ServersController < ApplicationController
   # GET /servers/new
   # GET /servers/new.json
   def new
-    @server = Server.new
+    @server = current_user.servers.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,13 +36,13 @@ class ServersController < ApplicationController
 
   # GET /servers/1/edit
   def edit
-    @server = Server.find(params[:id])
+    @server = current_user.servers.find(params[:id])
   end
 
   # POST /servers
   # POST /servers.json
   def create
-    @server = Server.new(params[:server])
+    @server = current_user.servers.new(params[:server])
 
     respond_to do |format|
       if @server.save
@@ -58,7 +58,7 @@ class ServersController < ApplicationController
   # PUT /servers/1
   # PUT /servers/1.json
   def update
-    @server = Server.find(params[:id])
+    @server = current_user.servers.find(params[:id])
 
     respond_to do |format|
       if @server.update_attributes(params[:server])
@@ -74,7 +74,7 @@ class ServersController < ApplicationController
   # DELETE /servers/1
   # DELETE /servers/1.json
   def destroy
-    @server = Server.find(params[:id])
+    @server = current_user.servers.find(params[:id])
     @server.destroy
 
     respond_to do |format|

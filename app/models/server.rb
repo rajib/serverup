@@ -2,8 +2,8 @@ class Server < ActiveRecord::Base
   attr_accessible :name, :status
 
   validates :name, presence: true, 
-            format: { :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix }
-            # uniqueness: {scope: :user_id}
+            format: { :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix },
+            uniqueness: {scope: :user_id}
 
   after_create :update_status
 
