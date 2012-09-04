@@ -20,3 +20,5 @@ gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem 'simple_form'
 gem 'slim'
+gem 'clockwork'
+gem 'delayed_job_active_record'
