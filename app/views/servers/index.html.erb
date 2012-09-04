@@ -8,7 +8,7 @@
   </colgroup>
   <thead>
     <tr>
-      <th>Url</th>
+      <th>Name</th>
       <th>Status</th>
       <th>Actions</th>
     </tr>
@@ -16,7 +16,7 @@
   <tbody>
   <% @servers.each do |server| %>
     <tr>
-      <td><%= server.name %></td>
+      <td><%= link_to server.name, server.full_uri, title: server.full_uri %></td>
       <td>
         <%= colourize_status server.status %>
       </td>
