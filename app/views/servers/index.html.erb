@@ -1,10 +1,18 @@
-<legend>Listing servers</legend>
+<legend>
+  Listing servers
+  <span class="pull-right">
+    <%= link_to new_server_path, class: 'btn btn-warning' do %>
+      New Server
+      <i class="icon-plus-sign"></i>
+    <% end %>
+  </span>
+</legend>
 
-<table  class="table">
+<table  class="table table-striped table-bordered">
   <colgroup>
-    <col class="span7">
-    <col class="span3">
+    <col class="span9">
     <col class="span2">
+    <col class="span1">
   </colgroup>
   <thead>
     <tr>
@@ -21,15 +29,17 @@
         <%= colourize_status server.status %>
       </td>
       <td>
-        <%= link_to 'Show', server %>
-        <%= link_to 'Edit', edit_server_path(server) %>
-        <%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to server, title: "show" do %>
+          <i class="icon-road"></i>
+        <% end %>
+        <%= link_to edit_server_path(server), title: "edit" do %>
+          <i class="icon-edit"></i>
+        <% end %>
+        <%= link_to server, method: :delete, data: { confirm: 'Are you sure?' }, title: "destroy" do %>
+          <i class="icon-trash"></i>
+        <% end %>
       </td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Server', new_server_path %>

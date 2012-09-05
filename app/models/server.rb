@@ -1,10 +1,9 @@
 class Server < ActiveRecord::Base
-  attr_accessible :name, :status, :port, :url
+  attr_accessible :name, :status, :url
 
   validates :name, presence: true
   validates :url, presence: true, 
             format: { :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix }
-  validates :port, numericality: true, allow_blank: true
 
   after_create :update_status
 
@@ -17,13 +16,12 @@ class Server < ActiveRecord::Base
 
   def self.update_statuses
   	all.each do |server|
-  		link_status = LinkStatus.new server.full_uri
-  		server.update_attribute(:status, server.interpreat_status(link_status.status))
+  		server.update_status
   	end
   end
 
   def full_uri
-    port ? "#{url}:#{port}" : url
+    url
   end
 
   def interpreat_status(code)
