@@ -21,4 +21,4 @@ gem "rolify", ">= 3.2.0"
 gem 'simple_form'
 gem 'slim'
 gem 'clockwork'
-gem 'delayed_job_active_record'
+gem 'daemons'

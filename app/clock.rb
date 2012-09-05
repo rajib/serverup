@@ -1,12 +1,13 @@
-# require 'config/boot'
-# require 'config/environment'
-require 'delayed_job_active_record'
+require File.expand_path('../../config/boot', __FILE__)
+require File.expand_path('../../config/environment', __FILE__)
 require 'clockwork'
-include Clockwork
 
-handler do |job|
-  puts "Running #{job}"
-  Delayed::Job.enqueue ServerStatusJob.new
+module Clockwork
+	handler do |job|
+	  puts "Running #{job}"
+	end
+
+	every(15.minutes, 'serverstatus.update') {
+		Server.update_statuses
+	}
 end
-
-every(1.minutes, 'serverstatus.update')
