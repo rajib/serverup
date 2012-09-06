@@ -8,38 +8,27 @@
   </span>
 </legend>
 
-<table  class="table table-striped table-bordered">
-  <colgroup>
-    <col class="span9">
-    <col class="span2">
-    <col class="span1">
-  </colgroup>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
+<ul class="thumbnails">
   <% @servers.each do |server| %>
-    <tr>
-      <td><%= link_to server.name, server.full_uri, title: server.full_uri %></td>
-      <td>
-        <%= colourize_status server.status %>
-      </td>
-      <td>
-        <%= link_to server, title: "show" do %>
-          <i class="icon-road"></i>
-        <% end %>
-        <%= link_to edit_server_path(server), title: "edit" do %>
-          <i class="icon-edit"></i>
-        <% end %>
-        <%= link_to server, method: :delete, data: { confirm: 'Are you sure?' }, title: "destroy" do %>
-          <i class="icon-trash"></i>
-        <% end %>
-      </td>
-    </tr>
+    <li class="span3">
+      <div class="thumbnail">
+        </span>
+          <strong><%= link_to server.name, server.full_uri, title: server.full_uri %></strong>
+          <span class="pull-right"><%= colourize_status server.status %></span>
+        </span>
+        <p style="padding-top: 10px;">
+          <%= link_to server, title: "show" do %>
+            <i class="icon-road"></i>
+          <% end %>
+          <%= link_to edit_server_path(server), title: "edit" do %>
+            <i class="icon-edit"></i>
+          <% end %>
+          <%= link_to server, method: :delete, data: { confirm: 'Are you sure?' }, title: "destroy" do %>
+            <i class="icon-trash"></i>
+          <% end %>
+          <span class="last-updated-at"><%= "checked #{distance_of_time_in_words_to_now(server.updated_at)} ago" %></span>
+        </p>
+      </div>
+    </li>
   <% end %>
-  </tbody>
-</table>
+</ul>
