@@ -12,6 +12,7 @@ class Server < ActiveRecord::Base
   def update_status
     link_status = LinkStatus.new full_uri
     update_attribute(:status, interpreat_status(link_status.status))
+    touch(:updated_at)
   end
 
   def self.update_statuses
