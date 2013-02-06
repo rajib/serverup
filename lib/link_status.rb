@@ -14,7 +14,7 @@ class LinkStatus
       end
     rescue SocketError => error
       return 404
-    rescue Errno::ECONNRESET => error
+    rescue StandardError => error
       return 404
     end
   end
