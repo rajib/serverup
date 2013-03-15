@@ -34,4 +34,16 @@ class Server < ActiveRecord::Base
   		"error"
   	end
   end
+
+  def self.server_down_mail
+    all.each do |server|
+      if server.status == "down"
+        logger.info "=====**************************#{server.status.inspect}"
+        user = User.find_by_id(server.user_id)
+         logger.info "=====**************************#{server.name.inspect}"
+        Notifier.notification_email(user, server).deliver
+      end
+    end
+  end
+
 end
