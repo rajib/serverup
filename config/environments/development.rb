@@ -15,7 +15,7 @@ Rails3BootstrapDeviseCancan::Application.configure do
 
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :sendmail
   # change to true to allow email to be sent during development
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
@@ -27,8 +27,8 @@ Rails3BootstrapDeviseCancan::Application.configure do
     domain: "gmail.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "indusnet.testacc@gmail.com",
-    password: "test@123"
+    user_name: "admin@serverup.com",
+    password: "password"
   }
 
 

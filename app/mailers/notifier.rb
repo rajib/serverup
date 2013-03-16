@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default from: "indusnet.testacc@gmail.com"
+  default from: "admin@serverup.com"
 
   def notification_email(user, server)
    	@user = user
