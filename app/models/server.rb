@@ -18,6 +18,8 @@ class Server < ActiveRecord::Base
   def self.update_statuses
   	all.each do |server|
   		server.update_status
+      @serverhistory = ServerHistory.new(:server_id => server.id, :status => server.status)
+      @serverhistory.save
   	end
   end
 
@@ -35,15 +37,20 @@ class Server < ActiveRecord::Base
   	end
   end
 
-  def self.server_down_mail
+  def self.server_notification_mail
     all.each do |server|
-      if server.status == "down"
-        logger.info "=====**************************#{server.status.inspect}"
+      if server.status != ServerHistory.last_status(server.id)
         user = User.find_by_id(server.user_id)
-         logger.info "=====**************************#{server.name.inspect}"
-        Notifier.notification_email(user, server).deliver
+        if server.status == "down"
+          Notifier.down_email(user, server).deliver
+        elsif server.status == "up"
+          Notifier.up_email(user, server).deliver
+        else
+          logger.info "==============Seems like something went wrong"
+        end
       end
     end
+
   end
 
 end
