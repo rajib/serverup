@@ -7,7 +7,7 @@ module Clockwork
 	  puts "Running #{job}"
 	end
 
-	every(15.minutes, 'serverstatus.update') {
+	every(5.minutes, 'serverstatus.update') {
 		Server.update_statuses
 		Server.server_notification_mail
 	}
