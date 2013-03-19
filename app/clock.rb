@@ -9,6 +9,6 @@ module Clockwork
 
 	every(5.minutes, 'serverstatus.update') {
 		Server.update_statuses
-		Server.server_notification_mail
+		# Server.server_notification_mail
 	}
 end
