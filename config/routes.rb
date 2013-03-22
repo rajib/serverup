@@ -12,6 +12,7 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
 	namespace :api do
 		namespace :v1  do
 	  	resource :sessions, only: [:create, :destroy]
+	  	resources :servers, except: [:new, :edit]
 	  end
 	end
 end
