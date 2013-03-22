@@ -8,4 +8,10 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
   devise_for :users
   resources :servers
   resources :users, :only => [:show, :index]
+
+	namespace :api do
+		namespace :v1  do
+	  	resource :sessions, only: [:create, :destroy]
+	  end
+	end
 end
