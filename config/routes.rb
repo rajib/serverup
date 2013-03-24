@@ -13,6 +13,7 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
 		namespace :v1  do
 	  	resource :sessions, only: [:create, :destroy]
 	  	resources :servers, except: [:new, :edit]
+      match 'sessions', :controller => 'sessions', :action => 'destroy', :constraints => {:method => 'OPTIONS'}
 	  end
 	end
 end
