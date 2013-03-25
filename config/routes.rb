@@ -1,4 +1,9 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
+  get "contacts_servers/assign"
+
+  resources :contacts
+
+
   authenticated :user do
     root :to => 'servers#index'
   end
