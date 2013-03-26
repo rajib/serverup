@@ -27,6 +27,26 @@
       }
     });
   });
+
+  $(document).ready(function(){
+     $("#assign").click(function(){
+     console.log("I'm here");
+     $.ajax({
+            url: "contacts_servers/assign",
+            type: "POST",
+            dataType: "html",
+            data: {server_id: $('#server_id').val(),id: $('#hidden_id').val() },
+            success: function(data) {
+              // $('#show').html(data)
+              console.log("yeeee");
+            },
+            error: function(data1) {
+              // $("#show").html("<b>Error</b>")
+             }
+            });
+
+        });
+  });
   </script>
 </head>
 <body>
@@ -36,7 +56,7 @@
   <%= hidden_field_tag(:server_id, params[:server_id]) %>
   <input id="contact" />
   <input type="hidden" id="hidden_id" value="" >
-  <input type="button" id="assign" value="Add This User">
+  <input type="button" id="assign" value="Add This User" class="btn btn-success">
 <!--   <%= link_to 'Add Contact', contacts_servers_assign_path, class:'btn btn-success' %> -->
   
   &nbsp;&nbsp;&nbsp;&nbsp;

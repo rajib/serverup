@@ -21,6 +21,7 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
   end
 
   resources :contacts_servers, only: [:assign]
+  match "servers/:server_id/contacts_servers/assign" => "contacts_servers#assign", as: :assign 
 
 	namespace :api do
 		namespace :v1  do
