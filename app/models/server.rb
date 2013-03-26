@@ -43,10 +43,16 @@ class Server < ActiveRecord::Base
     if ServerHistory.last_status(server.id) != "no_record"
       if server.status != ServerHistory.last_status(server.id)
         user = User.find_by_id(server.user_id)
+        recipients = Array.new
+        recipients.push(user.email)
+        rec = Contact.joins('INNER JOIN contacts_servers ON contacts_servers.contact_id=contacts.id').where('server_id=?',server.id)
+        rec.each do |r|
+          recipients.push(r.email)
+        end
         if server.status == "down"
-          Notifier.down_email(user, server).deliver
+          Notifier.down_email(recipients, server).deliver
         elsif server.status == "up"
-          Notifier.up_email(user, server).deliver
+          Notifier.up_email(recipients, server).deliver
         else
           
         end

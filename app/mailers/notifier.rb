@@ -1,18 +1,16 @@
 class Notifier < ActionMailer::Base
   default from: "admin@serverup.com"
 
-  def down_email(user, server)
-   	@user = user
-   	logger.info "=====user================#{user.inspect}"
+  def down_email(recipients, server)
+   	@recipients = recipients
     @server = server
-    mail(:to => user.email, :subject => "Server Status Notification")
+    mail(:to => @recipients.join(','), :subject => "Server Status Notification")
   end
 
   def up_email(user, server)
-   	@user = user
-   	logger.info "=====user================#{user.inspect}"
+   	@recipients = recipients
     @server = server
-    mail(:to => user.email, :subject => "Server Status Notification")
+    mail(:to => @recipients.join(','), :subject => "Server Status Notification")
   end
 
 end
