@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/resources/demos/style.css" />
   <script>
   $(function() {
-    var availableTags = <%= raw Contact.populate_contacts(current_user) %>;
+    var availableTags = <%= raw Contact.populate_contacts(current_user, params[:server_id]) %>;
 
     //     function log( message ) {
     //   $( "<div>" ).value( message ).prependTo( "#hidden_id" );
@@ -30,14 +30,13 @@
 
   $(document).ready(function(){
      $("#assign").click(function(){
-     console.log("I'm here");
      $.ajax({
             url: "contacts_servers/assign",
             type: "POST",
             dataType: "html",
             data: {server_id: $('#server_id').val(),id: $('#hidden_id').val() },
             success: function(data) {
-              // $('#show').html(data)
+              alert("user has been successfully added");
               console.log("yeeee");
             },
             error: function(data1) {
@@ -65,7 +64,7 @@
 </div>
 
 <br /><br /><br />
-<h1>Listing contacts</h1>
+<!-- <h1>Listing contacts</h1>
 
 <table>
   <tr>
@@ -87,7 +86,7 @@
     <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
-</table>
+</table> -->
 
 <br />
 
