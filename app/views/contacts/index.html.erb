@@ -28,39 +28,41 @@
     });
   });
 
-  $(document).ready(function(){
-     $("#assign").click(function(){
-     $.ajax({
-            url: "contacts_servers/assign",
-            type: "POST",
-            dataType: "html",
-            data: {server_id: $('#server_id').val(),id: $('#hidden_id').val() },
-            success: function(data) {
-              alert("user has been successfully added");
-              console.log("yeeee");
-            },
-            error: function(data1) {
-              // $("#show").html("<b>Error</b>")
-             }
-            });
+  // $(document).ready(function(){
+  //    $("#assign").click(function(){
+  //    $.ajax({
+  //           url: "contacts_servers/assign",
+  //           type: "POST",
+  //           dataType: "html",
+  //           data: {server_id: $('#server_id').val(),id: $('#hidden_id').val() },
+  //           success: function(data) {
+  //             $('#contact').val('');
+  //             alert("user has been successfully added");
+  //             console.log("user has been successfully added");
+  //           },
+  //           error: function(data1) {
+  //             alert("Oops!An error prevented this user from being added.Please try again");
+  //            }
+  //           });
 
-        });
-  });
+  //       });
+  // });
   </script>
 </head>
 <body>
 <div class="ui-widget">
   <label for="contacts">Contacts: </label>
- 
-  <%= hidden_field_tag(:server_id, params[:server_id]) %>
+  <%= form_tag assign_path do %>
+ <!--  <%= hidden_field_tag(:server_id, params[:server_id]) %> -->
   <input id="contact" />
-  <input type="hidden" id="hidden_id" value="" >
-  <input type="button" id="assign" value="Add This User" class="btn btn-success">
-<!--   <%= link_to 'Add Contact', contacts_servers_assign_path, class:'btn btn-success' %> -->
+  <!-- <input type="hidden" id="hidden_id" value="" > -->
+   <%= hidden_field_tag(:hidden_id) %>
+  <%= submit_tag "Add This User", :class => 'btn btn-success' %>
+  <% end %>
   
   &nbsp;&nbsp;&nbsp;&nbsp;
 <strong>OR</strong>&nbsp;&nbsp;
-<%= link_to 'New Contact', new_contact_path, class:'btn btn-success' %>
+<%= link_to 'New Contact', new_server_contact_path, class:'btn btn-success' %>
 </div>
 
 <br /><br /><br />
