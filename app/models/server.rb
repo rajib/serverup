@@ -17,12 +17,12 @@ class Server < ActiveRecord::Base
   end
 
   def self.update_statuses
-  	all.each do |server|
-  		server.update_status
+    all.each do |server|
+      server.update_status
       Server.server_notification_mail(server)
       @serverhistory = ServerHistory.new(:server_id => server.id, :status => server.status)
       @serverhistory.save
-  	end
+    end
   end
 
   def full_uri
@@ -30,13 +30,13 @@ class Server < ActiveRecord::Base
   end
 
   def interpreat_status(code)
-  	if ((200..206).to_a + (300..307).to_a).include?(code)
-  		"up"
-  	elsif ((400..417).to_a + (500..505).to_a).include?(code)
-  		"down"
-  	else
-  		"error"
-  	end
+    if ((200..206).to_a + (300..307).to_a).include?(code)
+      "up"
+    elsif ((400..417).to_a + (500..505).to_a).include?(code)
+      "down"
+    else
+      "error"
+    end
   end
 
   def self.server_notification_mail(server)
@@ -52,7 +52,8 @@ class Server < ActiveRecord::Base
         if server.status == "down"
           Notifier.down_email(recipients, server).deliver
         elsif server.status == "up"
-          Notifier.up_email(recipients, server).deliver
+          downtime = ServerHistory.downtime(server)
+          Notifier.up_email(recipients, server, downtime).deliver
         else
           
         end

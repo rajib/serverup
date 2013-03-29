@@ -8,10 +8,7 @@
   <script>
   $(function() {
     var availableTags = <%= raw Contact.populate_contacts(current_user, params[:server_id]) %>;
-
-    //     function log( message ) {
-    //   $( "<div>" ).value( message ).prependTo( "#hidden_id" );
-    // }
+    
     
     $( "#contact" ).autocomplete({
       source: function(req, add) {
