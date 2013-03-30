@@ -13,8 +13,9 @@
      
 
           $.each(availableContacts, function (i, name) {
-            map[name.name] = name;
-            names.push(name.name);
+            var q=name.name +"  \""+name.email+"\"";
+            map[q] = name;
+            names.push(q);
           });
           process(names);
         },
