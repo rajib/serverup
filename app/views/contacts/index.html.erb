@@ -1,93 +1,44 @@
 <head>
   <meta charset="utf-8" />
-  <title>jQuery UI Autocomplete - Default functionality</title>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
   <script>
-  $(function() {
-    var availableTags = <%= raw Contact.populate_contacts(current_user, params[:server_id]) %>;
-    
-    
-    $( "#contact" ).autocomplete({
-      source: function(req, add) {
-            add($.map(availableTags, function(el) {
-                return {
-                    label: el.name + ",   " + el.email,
-                    id: el.id
-                };
-            }));
+
+   $(document).ready(function(){
+
+     var availableContacts = <%= raw Contact.populate_contacts(current_user, params[:server_id]) %>;
+     $('#contact').typeahead({
+
+        source: function (query, process) {
+          names = [];
+          map = {};
+     
+
+          $.each(availableContacts, function (i, name) {
+            map[name.name] = name;
+            names.push(name.name);
+          });
+          process(names);
         },
-      select: function(event, ui) {
-        $('#hidden_id').val(ui.item.id);
-      }
-    });
-  });
 
-  // $(document).ready(function(){
-  //    $("#assign").click(function(){
-  //    $.ajax({
-  //           url: "contacts_servers/assign",
-  //           type: "POST",
-  //           dataType: "html",
-  //           data: {server_id: $('#server_id').val(),id: $('#hidden_id').val() },
-  //           success: function(data) {
-  //             $('#contact').val('');
-  //             alert("user has been successfully added");
-  //             console.log("user has been successfully added");
-  //           },
-  //           error: function(data1) {
-  //             alert("Oops!An error prevented this user from being added.Please try again");
-  //            }
-  //           });
-
-  //       });
-  // });
+        updater: function (item) {
+          $('#hidden_id').val(map[item].id);
+          return item;
+        }
+      });
+   });
   </script>
 </head>
 <body>
 <div class="ui-widget">
   <label for="contacts">Contacts: </label>
   <%= form_tag assign_path do %>
- <!--  <%= hidden_field_tag(:server_id, params[:server_id]) %> -->
-  <input id="contact" />
-  <!-- <input type="hidden" id="hidden_id" value="" > -->
-   <%= hidden_field_tag(:hidden_id) %>
+  <input id="contact" data-provide="typeahead" autocomplete="off" />
+  <%= hidden_field_tag(:hidden_id) %>
   <%= submit_tag "Add This User", :class => 'btn btn-success' %>
   <% end %>
   
   &nbsp;&nbsp;&nbsp;&nbsp;
-<strong>OR</strong>&nbsp;&nbsp;
-<%= link_to 'New Contact', new_server_contact_path, class:'btn btn-success' %>
+  <strong>OR</strong>&nbsp;&nbsp;
+  <%= link_to 'New Contact', new_server_contact_path, class:'btn btn-success' %>
 </div>
-
-<br /><br /><br />
-<!-- <h1>Listing contacts</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @contacts.each do |contact| %>
-  <tr>
-    <td><%= contact.user %></td>
-    <td><%= contact.name %></td>
-    <td><%= contact.email %></td>
-    <td><%= link_to 'Show', contact %></td>
-    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-    <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table> -->
-
-<br />
-
 
 </body>
