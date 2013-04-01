@@ -4,11 +4,11 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-      <h1>The Following Server is Up:-</h1>
+      <h1>ServerUp Alert UP:-</h1>
       =========================================================================
+      
+  <h4><strong><%= @server.name %>(<%= @server.url %>)</strong> is UP again at <%= @server.updated_at.strftime("%d-%m-%y") %>  <%= @server.updated_at.strftime("%H:%M:%S%p") %>, after <%= @downtime %>m of downtime.</h4>
 
-      <h3>Name:- <%= @server.name %></h3><br />
-      <h3>Url:- <%= @server.url %></h3>
   </body>
 </html>
 

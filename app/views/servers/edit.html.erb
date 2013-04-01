@@ -1,6 +1,10 @@
 <legend>Editing server</legend>
 
 <%= render 'form' %>
+<%= link_to 'Add Contacts for this Server', server_contacts_path(@server), class:'btn btn-success' %>
+<br />
 
 <%= link_to 'Show', @server %> |
 <%= link_to 'Back', servers_path %>
+
+
