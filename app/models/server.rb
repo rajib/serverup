@@ -20,7 +20,7 @@ class Server < ActiveRecord::Base
     all.each do |server|
       server.update_status
       Server.server_notification_mail(server)
-      @serverhistory = ServerHistory.new(:server_id => server.id, :status => server.status)
+      @serverhistory = ServerHistory.new(server_id:server.id, status:server.status)
       @serverhistory.save
     end
   end
@@ -43,11 +43,11 @@ class Server < ActiveRecord::Base
     if ServerHistory.last_status(server.id) != "no_record"
       if server.status != ServerHistory.last_status(server.id)
         user = User.find_by_id(server.user_id)
-        recipients = Array.new
-        recipients.push(user.email)
-        rec = Contact.joins('INNER JOIN contacts_servers ON contacts_servers.contact_id=contacts.id').where('server_id=?',server.id)
+        recipients = []
+        recipients << user.email
+        rec = server.contacts
         rec.each do |r|
-          recipients.push(r.email)
+          recipients << r.email
         end
         if server.status == "down"
           Notifier.down_email(recipients, server).deliver

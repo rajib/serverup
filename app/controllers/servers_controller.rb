@@ -6,10 +6,6 @@ class ServersController < ApplicationController
   def index
     @servers = current_user.servers
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @servers }
-    end
   end
 
   # GET /servers/1
@@ -17,10 +13,6 @@ class ServersController < ApplicationController
   def show
     @server = current_user.servers.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @server }
-    end
   end
 
   # GET /servers/new
@@ -28,10 +20,6 @@ class ServersController < ApplicationController
   def new
     @server = current_user.servers.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @server }
-    end
   end
 
   # GET /servers/1/edit
@@ -44,15 +32,11 @@ class ServersController < ApplicationController
   def create
     @server = current_user.servers.new(params[:server])
 
-    respond_to do |format|
       if @server.save
-        format.html { redirect_to @server, notice: 'Server was successfully created.' }
-        format.json { render json: @server, status: :created, location: @server }
+        redirect_to @server, notice: 'Server was successfully created.'
       else
-        format.html { render action: "new" }
-        format.json { render json: @server.errors, status: :unprocessable_entity }
+        render action: "new"
       end
-    end
   end
 
   # PUT /servers/1
@@ -60,15 +44,11 @@ class ServersController < ApplicationController
   def update
     @server = current_user.servers.find(params[:id])
 
-    respond_to do |format|
       if @server.update_attributes(params[:server])
-        format.html { redirect_to @server, notice: 'Server was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @server, notice: 'Server was successfully updated.'
       else
-        format.html { render action: "edit" }
-        format.json { render json: @server.errors, status: :unprocessable_entity }
+        render action: "edit"
       end
-    end
   end
 
   # DELETE /servers/1
@@ -76,10 +56,6 @@ class ServersController < ApplicationController
   def destroy
     @server = current_user.servers.find(params[:id])
     @server.destroy
-
-    respond_to do |format|
-      format.html { redirect_to servers_url }
-      format.json { head :no_content }
-    end
+    redirect_to servers_url
   end
 end

@@ -1,9 +1,7 @@
-<head>
-  <meta charset="utf-8" />
-  <script>
-
+<%= yield(:head) %>
+<% content_for :head do %>
+<script type="text/javascript">
    $(document).ready(function(){
-
      var availableContacts = <%= raw Contact.populate_contacts(current_user, params[:server_id]) %>;
      $('#contact').typeahead({
 
@@ -27,19 +25,17 @@
       });
    });
   </script>
-</head>
-<body>
+ <% end %> 
+
 <div class="ui-widget">
   <label for="contacts">Contacts: </label>
   <%= form_tag assign_path do %>
   <input id="contact" data-provide="typeahead" autocomplete="off" />
   <%= hidden_field_tag(:hidden_id) %>
-  <%= submit_tag "Add This User", :class => 'btn btn-success' %>
+  <%= submit_tag "Add This User", class:'btn btn-success' %>
   <% end %>
   
   &nbsp;&nbsp;&nbsp;&nbsp;
   <strong>OR</strong>&nbsp;&nbsp;
-  <%= link_to 'New Contact', new_server_contact_path, class:'btn btn-success' %>
+  <%= link_to 'Add New Contact', new_server_contact_path, class:'btn btn-success' %>
 </div>
-
-</body>
