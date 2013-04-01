@@ -46,3 +46,5 @@ fi
 # then
 #   bundle install | GREP_OPTIONS= \grep -vE '^Using|Your bundle is complete'
 # fi
+rvm use ruby-1.9.3-p327@rails3.2.9
+rvm use ruby-1.9.3-p327@rails3.2.9
