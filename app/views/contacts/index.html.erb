@@ -1,41 +1,29 @@
-<%= yield(:head) %>
-<% content_for :head do %>
-<script type="text/javascript">
-   $(document).ready(function(){
-     var availableContacts = <%= raw Contact.populate_contacts(current_user, params[:server_id]) %>;
-     $('#contact').typeahead({
+<legend>Listing contacts</legend>
 
-        source: function (query, process) {
-          names = [];
-          map = {};
-     
+<table id="contacts_listing" class="table table-bordered">
+ <thead> 
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ </thead>
+ <tbody> 
 
-          $.each(availableContacts, function (i, name) {
-            var q=name.name +"  \""+name.email+"\"";
-            map[q] = name;
-            names.push(q);
-          });
-          process(names);
-        },
+<% @contacts.each do |contact| %>
+  <tr class="success">
+    <td><%= contact.name %></td>
+    <td><%= contact.email %></td>
+    <td><%= link_to 'Show', contact %></td>
+    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+    <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+<tbody>
+</table>
 
-        updater: function (item) {
-          $('#hidden_id').val(map[item].id);
-          return item;
-        }
-      });
-   });
-  </script>
- <% end %> 
+<br />
 
-<div class="ui-widget">
-  <label for="contacts">Contacts: </label>
-  <%= form_tag assign_path do %>
-  <input id="contact" data-provide="typeahead" autocomplete="off" />
-  <%= hidden_field_tag(:hidden_id) %>
-  <%= submit_tag "Add This User", class:'btn btn-success' %>
-  <% end %>
-  
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <strong>OR</strong>&nbsp;&nbsp;
-  <%= link_to 'Add New Contact', new_server_contact_path, class:'btn btn-success' %>
-</div>
+<%= link_to 'New Contact', new_contact_path %>

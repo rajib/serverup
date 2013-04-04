@@ -1,4 +1,4 @@
-<%= link_to "serverup?", root_path, :class => 'brand' %>
+<%= link_to "serverup?", root_path, class:'brand' %>
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
@@ -14,6 +14,12 @@
 </ul>
 <ul class="nav pull-right">
   <% if user_signed_in? %>
+     <li>
+    <%= link_to contacts_path do %>
+      <i class=" icon-user icon-white"></i>
+      My Contacts
+    <% end %>
+    </li> 
     <li>
     <%= link_to edit_user_registration_path do %>
       <i class=" icon-user icon-white"></i>
@@ -21,7 +27,7 @@
     <% end %>
     </li>
     <li>
-    <%= link_to destroy_user_session_path, :method => 'delete' do %>        
+    <%= link_to destroy_user_session_path, method:'delete' do %>        
       <i class="icon-off icon-white"></i>
     <% end %>
     </li>
