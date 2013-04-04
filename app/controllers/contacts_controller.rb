@@ -30,12 +30,23 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    @contact = current_user.contacts.new(params[:contact])
+    logger.info "=====params==============#{params.inspect}"
+    if params[:status] == "ajax_call"
+      @contact = current_user.contacts.new(name:params[:name], email:params[:email])
+    else
+      @contact = current_user.contacts.new(params[:contact])
+    end
+       @server_id = params[:server_id].to_i
+       if @contact.save
+      #   redirect_to @contact, notice: 'Contact was successfully created.'  
+      # else
+      #   render action: "new" 
+      # end
 
-      if @contact.save
-        redirect_to @contact, notice: 'Contact was successfully created.'  
-      else
-        render action: "new" 
+         respond_to do |format|
+           format.html 
+           format.js
+         end
       end
     
   end

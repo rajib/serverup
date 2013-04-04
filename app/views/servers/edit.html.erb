@@ -1,10 +1,91 @@
+<%= yield(:head) %>
+<% content_for :head do %>
+<script type="text/javascript">
+   $(document).ready(function(){
+     var availableContacts = <%= raw Contact.populate_contacts(current_user, params[:id]) %>;
+     $('#contact').typeahead({
+
+        source: function (query, process) {
+          names = [];
+          map = {};
+     
+
+          $.each(availableContacts, function (i, name) {
+            var q=name.name +"  \""+name.email+"\"";
+            map[q] = name;
+            names.push(q);
+          });
+          process(names);
+        },
+
+        updater: function (item) {
+          $('#hidden_id').val(map[item].id);
+          return item;
+        }
+      });
+
+     $('#new_contact_link').click(function(){
+       $('#new_contact_div').toggle();
+     });
+
+     // $('#new_contact').submit(function() {
+     //       $.ajax({
+     //        url: "/contacts",
+     //        type: "POST",
+     //        dataType: "html",
+     //        success: function(data) {
+     //          console.log("User Successfully added");
+
+     //        },
+     //        error: function(data){
+     //          console.log(data);
+     //        }
+
+     //        });   
+     // });
+   });
+  </script>
+ <% end %> 
+
 <legend>Editing server</legend>
 
+<div id="left_form" style="width: 300px;float: left;">
 <%= render 'form' %>
-<%= link_to 'Add Contacts for this Server', server_contacts_path(@server), class:'btn btn-success' %>
+</div>
+<div id="right_form" style="margin-left: 60px;float: right">
+  <label for="contacts">Contacts: </label>
+  <%= form_tag contacts_servers_assign_path do %>
+  <input id="contact" data-provide="typeahead" autocomplete="off" />
+  <%= hidden_field_tag(:hidden_id) %>
+  <%= submit_tag "Add This User", class:'btn btn-success' %>
+  <% end %>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>OR</strong>&nbsp;&nbsp;
+  <%= button_tag 'Add New Contact', id:'new_contact_link', class:'btn btn-success btn-mini' %>
+  <div id="new_contact_div" style="display:none" >
+    <%= form_tag('/contacts', remote:true) do %>
+    <%= label_tag 'name' %>
+    <%= text_field_tag 'name' %><br />
+    <%= label_tag 'email' %>
+    <%= text_field_tag 'email' %><br />
+    <%= hidden_field_tag 'status', 'ajax_call' %>
+    <%= hidden_field_tag 'server_id', @server_id %>
+    <%= submit_tag 'Add This Contact', class:'btn btn-success' %>
+    <% end %>
+
+  <!--  <%= render partial:'contacts/form', object:@contact %>  --> 
+  </div>
+</div>  
+    <br /><br /><br />
+    <div id="already_added_contacts" style="float:left">
+      <%= render 'contacts' %>
+    </div>  
+<!-- <%= link_to 'Add Contacts for this Server', server_contacts_path(@server), class:'btn btn-success' %>
 <br />
 
 <%= link_to 'Show', @server %> |
-<%= link_to 'Back', servers_path %>
+<%= link_to 'Back', servers_path %> -->
+
 
 

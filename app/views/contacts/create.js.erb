@@ -1,0 +1,2 @@
+console.log("Success");
+$("#already_added_contacts").html("<%= escape_javascript(render partial: 'servers/contacts', :locals => {:server_id => @server_id}) %>");

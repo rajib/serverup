@@ -1,0 +1,18 @@
+    <% server_id = @server_id if @server_id.present? %>
+    Contacts Already Added for This Server
+    <table>
+        <tr>
+        <td>Name:</td>
+        <td>Email:</td>
+        <td></td>
+        </tr>
+        <% contacts = Contact.already_added_contact(current_user, server_id) %>
+        <% contacts.each do |contact| %>
+          <tr>
+            <td><%= contact.name %></td>
+            <td><%= contact.email %></td>
+            <td>Delete</td>
+          </tr>
+        <% end %>
+
+    </table>    
