@@ -3,6 +3,8 @@ class Contact < ActiveRecord::Base
   has_and_belongs_to_many :servers
   attr_accessible :email, :name
   attr_accessible :email, :name, :user_id
+  validates :name, :presence => true
+  validates :email, :presence => true
 
   def self.populate_contacts(current_user, server_id)
     server = Server.find server_id
@@ -29,7 +31,7 @@ class Contact < ActiveRecord::Base
     else
        contacts = Contact.where('user_id=? and id NOT IN (?)',current_user.id, already_added_contact_ids).select([:name, :email, :id])
     end
-  
-     return contacts    
+    
+     return contacts.reverse    
   end
 end

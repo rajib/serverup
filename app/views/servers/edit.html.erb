@@ -28,43 +28,32 @@
        $('#new_contact_div').toggle();
      });
 
-     // $('#new_contact').submit(function() {
-     //       $.ajax({
-     //        url: "/contacts",
-     //        type: "POST",
-     //        dataType: "html",
-     //        success: function(data) {
-     //          console.log("User Successfully added");
-
-     //        },
-     //        error: function(data){
-     //          console.log(data);
-     //        }
-
-     //        });   
-     // });
    });
   </script>
  <% end %> 
 
 <legend>Editing server</legend>
 
+<div id="two_forms">
+
 <div id="left_form" style="width: 300px;float: left;">
 <%= render 'form' %>
 </div>
 <div id="right_form" style="margin-left: 60px;float: right">
   <label for="contacts">Contacts: </label>
-  <%= form_tag contacts_servers_assign_path do %>
-  <input id="contact" data-provide="typeahead" autocomplete="off" />
+  <%= form_tag contacts_servers_assign_path, class:'form-search' do %>
   <%= hidden_field_tag(:hidden_id) %>
+  <div class="input-append">
+  <input id="contact" data-provide="typeahead" autocomplete="off" class="span3 search-query" />
   <%= submit_tag "Add This User", class:'btn btn-success' %>
+  </div>
   <% end %>
   
   &nbsp;&nbsp;&nbsp;&nbsp;
   <strong>OR</strong>&nbsp;&nbsp;
-  <%= button_tag 'Add New Contact', id:'new_contact_link', class:'btn btn-success btn-mini' %>
+  <%= button_tag 'Add New Contact', id:'new_contact_link', class:'btn btn-inverse btn-mini' %>
   <div id="new_contact_div" style="display:none" >
-    <%= form_tag('/contacts', remote:true) do %>
+    <%= form_tag('/contacts', remote:true, id:'form2') do %>
     <%= label_tag 'name' %>
     <%= text_field_tag 'name' %><br />
     <%= label_tag 'email' %>
@@ -77,13 +66,13 @@
   <!--  <%= render partial:'contacts/form', object:@contact %>  --> 
   </div>
 </div>  
-    <br /><br /><br />
-    <div id="already_added_contacts" style="float:left">
-      <%= render 'contacts' %>
-    </div>  
-<!-- <%= link_to 'Add Contacts for this Server', server_contacts_path(@server), class:'btn btn-success' %>
+</div>
+<div id="already_added_contacts" style="margin-top: 300px">
+<hr>
+   <%= render 'contacts' %>
+</div>  
 <br />
-
+<!--
 <%= link_to 'Show', @server %> |
 <%= link_to 'Back', servers_path %> -->
 

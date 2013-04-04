@@ -30,7 +30,6 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    logger.info "=====params==============#{params.inspect}"
     if params[:status] == "ajax_call"
       @contact = current_user.contacts.new(name:params[:name], email:params[:email])
     else
@@ -70,7 +69,15 @@ class ContactsController < ApplicationController
     @contact = current_user.contacts.find(params[:id])
     @contact.destroy
 
-    redirect_to contacts_url
+    @server_id = params[:server_id].to_i
+    if @server_id
+      respond_to do |format|
+        format.html 
+        format.js
+      end   
+    else
+     redirect_to contacts_url
+    end 
     
   end
 end

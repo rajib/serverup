@@ -1,18 +1,21 @@
     <% server_id = @server_id if @server_id.present? %>
-    Contacts Already Added for This Server
-    <table>
+    <h4>Contacts Already Added for This Server</h4>
+    <table id="table_already_added_contacts" class="table table-bordered">
+      <thead>  
         <tr>
         <td>Name:</td>
         <td>Email:</td>
         <td></td>
         </tr>
+      </thead>
+      <tbody>  
         <% contacts = Contact.already_added_contact(current_user, server_id) %>
         <% contacts.each do |contact| %>
-          <tr>
+          <tr class="success">
             <td><%= contact.name %></td>
             <td><%= contact.email %></td>
-            <td>Delete</td>
-          </tr>
+            <td><%= link_to 'Delete', destroy_url(server_id,contact.id), confirm:'Are you sure?', method: :delete, remote: true %></td>
+          </tr> 
         <% end %>
-
+    </tbody>
     </table>    
