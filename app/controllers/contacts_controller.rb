@@ -37,13 +37,9 @@ class ContactsController < ApplicationController
     end
        @server_id = params[:server_id].to_i
        if @contact.save
-      #   redirect_to @contact, notice: 'Contact was successfully created.'  
-      # else
-      #   render action: "new" 
-      # end
 
          respond_to do |format|
-           format.html 
+           format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
            format.js
          end
       end
@@ -72,7 +68,7 @@ class ContactsController < ApplicationController
     @server_id = params[:server_id].to_i
     if @server_id
       respond_to do |format|
-        format.html 
+        format.html { redirect_to contacts_url }
         format.js
       end   
     else

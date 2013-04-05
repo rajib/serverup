@@ -41,7 +41,8 @@
 </div>
 <div id="right_form" style="margin-left: 60px;float: right">
   <label for="contacts">Contacts: </label>
-  <%= form_tag contacts_servers_assign_path, class:'form-search' do %>
+  <%= form_tag contacts_servers_assign_path, method:'get', remote:true, class:'form-search', id:'form_search_contacts' do %>
+  <%= hidden_field_tag 'server_id', @server_id %>
   <%= hidden_field_tag(:hidden_id) %>
   <div class="input-append">
   <input id="contact" data-provide="typeahead" autocomplete="off" class="span3 search-query" />

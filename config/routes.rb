@@ -16,7 +16,6 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
   resources :users, :only => [:show, :index]
 
   resources :servers do
-    resources :contacts
     resources :contacts_servers
   end
 

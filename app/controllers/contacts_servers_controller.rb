@@ -6,6 +6,10 @@ class ContactsServersController < ApplicationController
     @contact = Contact.find(params[:hidden_id])
     @server.contacts << @contact
     @server.save
-    redirect_to server_contacts_path(params[:server_id]), notice:'The Mail ID was successfully added'
+
+    respond_to do |format|
+       format.html 
+       format.js 
+    end
   end
 end
