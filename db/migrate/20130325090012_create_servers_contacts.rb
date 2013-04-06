@@ -1,6 +1,6 @@
 class CreateServersContacts < ActiveRecord::Migration
   def up
-  	create_table :contacts_servers, :id => false do |t|
+  	create_table :contacts_servers do |t|
       t.integer :server_id
       t.integer :contact_id
     end  	

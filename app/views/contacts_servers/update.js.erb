@@ -1,8 +1,12 @@
+console.log("Success");
+$("#form_search_contacts").each(function(){
+	this.reset();
+});
 $("#already_added_contacts").html("<%= escape_javascript(render partial: 'servers/contacts', locals: {server: @server}) %>");
 $('#table_already_added_contacts').dataTable({
                     "sPaginationType": "bootstrap",
                     "oLanguage": {
                         "sLengthMenu": "_MENU_ records per page"
                     },
-                    "aaSorting": []
+                    "aaSorting": []	
 });

@@ -22,8 +22,7 @@ gem 'clockwork'
 gem 'daemons'
 gem 'execjs'
 gem 'therubyracer'
-
+gem 'passenger'
 group :assets do
   gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
-  gem 'jquery-ui-rails'
 end

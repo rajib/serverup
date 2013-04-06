@@ -1,5 +1,13 @@
 $('#form2').each(function(){
     this.reset();
 });
-$("#already_added_contacts").html("<%= escape_javascript(render partial: 'servers/contacts', locals: {server_id:@server_id}) %>");
-$('#table_already_added_contacts').dataTable();
+$("#already_added_contacts").html("<%= escape_javascript(render partial: 'servers/contacts', locals: {server_id: @server_id}) %>");
+$('.typeahead').append('xx')
+console.log('a');
+$('#table_already_added_contacts').dataTable({
+                    "sPaginationType": "bootstrap",
+                    "oLanguage": {
+                        "sLengthMenu": "_MENU_ records per page"
+                    },
+                    "aaSorting": []
+});

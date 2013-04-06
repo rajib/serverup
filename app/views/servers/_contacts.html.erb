@@ -1,20 +1,20 @@
-    <% server_id = @server_id if @server_id.present? %>
+    <% server = @server if @server.present? %>
     <legend>Contact</legend>
     <table id="table_already_added_contacts" class="table table-bordered">
       <thead>  
         <tr>
         <td>Name:</td>
         <td>Email:</td>
-        <td></td>
+        <td>Action:</td>
         </tr>
       </thead>
       <tbody>  
-        <% contacts = Contact.already_added_contact(current_user, server_id) %>
+        <% contacts = server.contacts.order("created_at DESC") %>
         <% contacts.each do |contact| %>
           <tr class="success">
             <td><%= contact.name %></td>
             <td><%= contact.email %></td>
-            <td><%= link_to 'Delete', destroy_url(server_id,contact.id), confirm:'Are you sure?', method: :delete, remote: true %></td>
+            <td><%= link_to 'Delete', server_contacts_server_path(server, contact), confirm:'Are you sure?', method: :delete, remote: true %></td>
           </tr> 
         <% end %>
     </tbody>
