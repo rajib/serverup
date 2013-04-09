@@ -1,11 +1,9 @@
 $(document).ready(function() {
-				$('#table_already_added_contacts').dataTable( {
-					"sPaginationType": "bootstrap",
-					"oLanguage": {
-						"sLengthMenu": "_MENU_ records per page"
-					},
-					"aaSorting": [],
-					"bPaginate": false,
-					"bInfo": false
-				} );
-			} );
+
+        $('#table_already_added_contacts').dataTable({
+         "sDom": "<'row-fluid'<'span6'f><'span6'T>>t<'row-fluid'<'span6'><'span6'p>>",
+         "sPaginationType": "bootstrap",
+         "aaSorting": []
+        });
+
+} );

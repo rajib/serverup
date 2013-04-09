@@ -18,8 +18,8 @@
         },
 
         updater: function (item) {
-          $('#user_id').val(map[item].id);
-          $('#form_search_contacts').attr('action','contacts_servers/'+map[item].id);
+          
+          $('#form_search_contacts').attr('action','/servers/'+<%= @server.id %>+'/contacts_servers/'+map[item].id);
           return item;
         }
       });

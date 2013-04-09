@@ -23,9 +23,8 @@ class ContactsServersController < ApplicationController
   end
 
   def update
-    logger.info "=======params====================#{params.inspect}"
     @server = Server.find(params[:server_id])
-    @contact = Contact.find(params[:user_id])
+    @contact = Contact.find(params[:id])
     @server.contacts << @contact
     @server.save
     respond_to do |format|

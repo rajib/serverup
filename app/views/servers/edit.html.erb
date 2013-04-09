@@ -13,10 +13,9 @@
 <div id="right_form" style="margin-left: 60px;float: right">
   <label for="contacts">Contacts: </label>
   <%= form_tag server_contacts_servers_path(@server.id), method: :put, remote:true, class:'form-search', id:'form_search_contacts' do %>
-  <%= hidden_field_tag(:user_id) %>
   <div class="input-append">
-  <input id="contact" data-provide="typeahead" autocomplete="off" class="span3 search-query" />
-  <%= submit_tag "Add", class:'btn btn-success' %>
+    <input id="contact" data-provide="typeahead" autocomplete="off" class="span3 search-query" />
+    <%= submit_tag "Add", class:'btn btn-success', style:'height:24px;' %>
   </div>
   <% end %>
 

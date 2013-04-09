@@ -5,12 +5,12 @@
         <tr>
         <td>Name:</td>
         <td>Email:</td>
-        <td>Action:</td>
+        <td></td>
         </tr>
       </thead>
       <tbody>  
-        <% contacts = server.contacts.order("created_at DESC") %>
-        <% contacts.each do |contact| %>
+        <% contacts_added = server.contacts.reverse %>
+        <% contacts_added.each do |contact| %>
           <tr class="success">
             <td><%= contact.name %></td>
             <td><%= contact.email %></td>
