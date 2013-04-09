@@ -1,7 +1,6 @@
-<% server_id = @server_id if @server_id.present? %>
 <script type="text/javascript">
+   var availableContacts = <%= raw Contact.populate_contacts(current_user, @server.id) %>;
    $(document).ready(function(){
-     var availableContacts = <%= raw Contact.populate_contacts(current_user, server_id) %>;
      $('#contact').typeahead({
         
         source: function (query, process) {

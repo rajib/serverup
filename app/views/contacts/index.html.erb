@@ -1,6 +1,6 @@
 <legend>Listing contacts</legend>
 
-<table id="contacts_listing" class="table table-bordered">
+<table id="contacts_listing" class="table table-bordered table-striped">
  <thead> 
   <tr>
     <th>Name</th>
@@ -13,7 +13,7 @@
  <tbody> 
 
 <% @contacts.each do |contact| %>
-  <tr class="success">
+  <tr>
     <td><%= contact.name %></td>
     <td><%= contact.email %></td>
     <td><%= link_to 'Show', contact %></td>

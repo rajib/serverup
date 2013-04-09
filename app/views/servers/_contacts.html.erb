@@ -1,6 +1,6 @@
     <% server = @server if @server.present? %>
     <legend>Contact</legend>
-    <table id="table_already_added_contacts" class="table table-bordered">
+    <table id="table_already_added_contacts" class="table table-bordered table-striped">
       <thead>  
         <tr>
         <td>Name:</td>
@@ -11,7 +11,7 @@
       <tbody>  
         <% contacts_added = server.contacts.reverse %>
         <% contacts_added.each do |contact| %>
-          <tr class="success">
+          <tr>
             <td><%= contact.name %></td>
             <td><%= contact.email %></td>
             <td><%= link_to 'Delete', server_contacts_server_path(server, contact), confirm:'Are you sure?', method: :delete, remote: true %></td>
