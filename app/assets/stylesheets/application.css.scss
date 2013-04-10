@@ -20,3 +20,31 @@
   height:auto !important;
   height:700px; 
 }
+
+.server-status{
+	color: #BBBBBB;
+	float: right;
+	margin: 4px 10px 0 0;
+	text-align: center;
+	width: 45px;
+}
+
+.server-updated-at{
+	font-size: 11px;
+	color: grey;
+}
+
+.DataTables_sort_wrapper{
+	text-align: left;
+}
+
+#header h1 {
+	background: url("/assets/logo.png") no-repeat scroll 0 0 transparent;
+	height: 44px;
+	left: 15px;
+	line-height: 600px;
+	overflow: hidden;
+	position: absolute;
+	top: 11px;
+	width: 191px;
+}

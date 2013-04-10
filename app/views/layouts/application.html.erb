@@ -12,26 +12,75 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-          <div class="navbar">
-            <div class="navbar-inner">
-              <%= render 'layouts/navigation' %>
-            </div>
-          </div>
-          <div class="row main-body">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
-            </div>
-          </div>
-          <hr>
-          <footer>
-            <p>© serverup? 2012</p>
-          </footer>
+    <div id="header">
+      <h1><a href="/">Unicorn Admin</a></h1>   
+    </div>
+    <!--     <div id="search">
+    <input type="text" placeholder="Search here..."><button type="submit" class="tip-right" title="" data-original-title="Search"><i class="icon-search icon-white"></i></button>
+    </div> -->
+    <div id="user-nav" class="navbar navbar-inverse">
+        <ul class="nav btn-group" style="width: auto; margin: 0px;">
+            <li class="btn btn-inverse">
+              <%= link_to edit_user_registration_path do %>
+                <i class="icon icon-user"></i> <span class="text">Profile</span>
+              <% end %>
+            </li>
+            <li class="btn btn-inverse">
+              <%= link_to destroy_user_session_path, method: 'delete' do %>
+                <i class="icon icon-share-alt"></i> <span class="text">Logout</span>
+              <% end %>
+            </li>
+        </ul>
+    </div>
+    <div id="sidebar">
+      <a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+      <ul style="display: block;">
+        <li class="<%= nav_class(root_path) %>"><a href="/"><i class="icon icon-home"></i> <span>Dashboard</span></a></li>
+        <li class="<%= nav_class(contacts_path) %>">
+          <%= link_to contacts_path do %>
+            <i class="icon icon-user"></i> <span>Contacts</span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
+    <div id="content">
+      <div id="content-header">
+        <h1>Dashboard</h1>
+        <div class="btn-group" style="width: auto;">
+        <%= link_to new_server_path, class: 'btn btn-large tip-bottom',  title: "", "data-original-title" => "Add Server" do %>
+          <i class="icon-plus-sign"></i>
+        <% end %>
         </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+      </div>
+      <div id="breadcrumb">
+        <a href="/" title="" class="tip-bottom" data-original-title="Go to Home"><i class="icon-home"></i> Home</a>
+        <a href="#" class="current"><%= params[:controller].capitalize %></a>
+      </div>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="alert alert-info">
+              Welcome in the <strong>Unicorn Admin Theme</strong>. Don't forget to check all the pages!
+              <a href="#" data-dismiss="alert" class="close">×</a>
+            </div>     
+          </div>
+        </div>
+
+        <div class="row-fluid">
+          <div class="span12">
+            <%= yield %>
+          </div> 
+        </div>
+        
+        
+        <div class="row-fluid">
+          <div id="footer" class="span12">
+            2012 - 2013 © Unicorn Admin. Brought to you by <a href="https://wrapbootstrap.com/user/diablo9983">diablo9983</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

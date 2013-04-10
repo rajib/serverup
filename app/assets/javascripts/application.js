@@ -18,7 +18,13 @@
 //= require_tree .
 
 
-
+$(function () {
+	$('.data-table').dataTable({
+		"bJQueryUI": true,
+		"sPaginationType": "full_numbers",
+		"sDom": '<"">t<"F"fp>'
+	});
+});
 
 	/* Default class modification */
 			$.extend( $.fn.dataTableExt.oStdClasses, {

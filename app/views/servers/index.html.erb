@@ -1,24 +1,35 @@
-<ul class="thumbnails">
-  <% @servers.each do |server| %>
-    <li class="span3">
-      <div class="thumbnail">
-        </span>
-          <strong><%= link_to server.name, server.full_uri, title: server.full_uri %></strong>
-          <span class="pull-right"><%= colourize_status server.status %></span>
-        </span>
-        <p style="padding-top: 10px;">
-          <%= link_to server, title: "show" do %>
-            <i class="icon-road"></i>
-          <% end %>
-          <%= link_to edit_server_path(server), title: "edit" do %>
-            <i class="icon-edit"></i>
-          <% end %>
-          <%= link_to server, method: :delete, data: { confirm: 'Are you sure?' }, title: "destroy" do %>
-            <i class="icon-trash"></i>
-          <% end %>
-          <span class="last-updated-at"><%= "checked #{distance_of_time_in_words_to_now(server.updated_at)} ago" %></span>
-        </p>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<div class="widget-box">
+  <div class="widget-title">
+    <span class="icon">
+      <i class="icon-th"></i>
+    </span>
+    <h5>Latest updates</h5>
+    <div class="buttons"><a href="#" class="btn btn-mini"><i class="icon-refresh"></i> Update stats</a></div>
+  </div>
+  <div class="widget-content nopadding">
+    <table class="data-table table table-striped table-hover">
+      <thead>
+        <tr>
+          <th class="text-left">Server</th>
+          <th>Last updated at</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @servers.each do |server| %>
+        <tr>
+          <td><strong><%= link_to server.name, server.full_uri, title: server.full_uri %></strong></td>
+          <td><span class="server-updated-at"><%= "#{distance_of_time_in_words_to_now(server.updated_at)} ago" %></span></td>
+          <td><%= colourize_status server.status %></td>
+          <td>
+            <%= link_to server, title: "show" do %><i class="icon-road"></i><% end %>
+            <%= link_to edit_server_path(server), title: "edit" do %><i class="icon-edit"></i><% end %>
+            <%= link_to server, method: :delete, data: { confirm: 'Are you sure?' }, title: "destroy" do %><i class="icon-trash"></i><% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>              
+  </div>
+</div>

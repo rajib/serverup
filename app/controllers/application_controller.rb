@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers
 
-  layout Proc.new { |controller| controller.request.xhr? ? nil : 'application' }
+  # layout Proc.new { |controller| !controller.user_signed_in? ? 'non_logged_in_application' : 'application' }
+  layout Proc.new { |controller| controller.request.xhr? ? nil : (!controller.user_signed_in? ? 'non_logged_in_application' : 'application') }
 
   # For all responses in this controller, return the CORS access control headers.
 

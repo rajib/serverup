@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20130325090012) do
 
   add_index "contacts", ["user_id"], :name => "index_contacts_on_user_id"
 
-  create_table "contacts_servers", :id => false, :force => true do |t|
+  create_table "contacts_servers", :force => true do |t|
     t.integer "server_id"
     t.integer "contact_id"
   end
