@@ -1,0 +1,32 @@
+<script type="text/javascript">
+   var availableContacts = <%= raw Contact.populate_contacts(current_user, @server.id) %>;
+   $(document).ready(function(){
+     $('#contact').typeahead({
+        
+        source: function (query, process) {
+          names = [];
+          map = {};
+     
+
+          $.each(availableContacts, function (i, name) {
+            var q=name.name +"  \""+name.email+"\"";
+            map[q] = name;
+            names.push(q);
+          });
+          process(names);
+        },
+
+        updater: function (item) {
+          
+          $('#form_search_contacts').attr('action','/servers/'+<%= @server.id %>+'/contacts_servers/'+map[item].id);
+          return item;
+        }
+      });
+
+     $('#new_contact_link').click(function(){
+       $('#new_contact_div').toggle();
+     });
+
+   });
+  </script>
+ 

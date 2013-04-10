@@ -1,11 +1,34 @@
 class ContactsServersController < ApplicationController
     before_filter :authenticate_user!
   
-  def assign
+  def create
     @server = Server.find(params[:server_id])
-    @contact = Contact.find(params[:hidden_id])
+    @contact = current_user.contacts.new(params[:contact])
+    if @contact.save
+      @server.contacts << @contact
+      @server.save
+    end
+    respond_to do |format|
+       format.js 
+    end
+  end
+
+  def destroy
+   @server = Server.find(params[:server_id]) 
+   @contactsserver = ContactsServer.find_by_server_id_and_contact_id(params[:server_id],params[:id])
+   @contactsserver.destroy
+   respond_to do |f|
+      f.js
+   end
+  end
+
+  def update
+    @server = Server.find(params[:server_id])
+    @contact = Contact.find(params[:id])
     @server.contacts << @contact
     @server.save
-    redirect_to server_contacts_path(params[:server_id]), notice:'The Mail ID was successfully added'
+    respond_to do |format|
+      format.js
+    end
   end
 end

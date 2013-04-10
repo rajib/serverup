@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 494f752b8eb8350f33841c822a67d014c869219f
+  specs:
+    jquery-datatables-rails (1.11.2)
+      jquery-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -63,6 +70,7 @@ GEM
       cucumber (>= 1.2.0)
       nokogiri (>= 1.5.0)
       rails (~> 3.0)
+    daemon_controller (1.1.2)
     daemons (1.1.9)
     database_cleaner (0.9.1)
     devise (2.2.3)
@@ -82,6 +90,7 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    fastthread (1.0.7)
     ffi (1.5.0)
     gherkin (2.11.6)
       json (>= 1.7.6)
@@ -104,6 +113,11 @@ GEM
     mysql2 (0.3.11)
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
+    passenger (3.0.19)
+      daemon_controller (>= 1.0.0)
+      fastthread (>= 1.0.1)
+      rack
+      rake (>= 0.8.1)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -200,9 +214,11 @@ DEPENDENCIES
   email_spec (>= 1.2.1)
   execjs
   factory_girl_rails (>= 4.0.0)
+  jquery-datatables-rails!
   jquery-rails
   launchy (>= 2.1.2)
   mysql2
+  passenger
   rails (= 3.2.13.rc2)
   rolify (>= 3.2.0)
   rspec-rails (>= 2.11.0)
