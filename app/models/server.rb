@@ -8,7 +8,9 @@ class Server < ActiveRecord::Base
   after_create :update_status
 
   belongs_to :user
-  has_and_belongs_to_many :contacts
+  has_many :contacts_server
+  has_many :contacts,:through => :contacts_server
+
 
   def update_status
     link_status = LinkStatus.new full_uri

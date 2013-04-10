@@ -16,12 +16,12 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
   resources :users, :only => [:show, :index]
 
   resources :servers do
-    resources :contacts
     resources :contacts_servers
   end
 
-  resources :contacts_servers, only: [:assign]
+  resources :contacts_servers
   match "servers/:server_id/contacts_servers/assign" => "contacts_servers#assign", as: :assign 
+  match "servers/:server_id/contacts/:id" => "contacts#destroy", as: :destroy
 
 	namespace :api do
 		namespace :v1  do

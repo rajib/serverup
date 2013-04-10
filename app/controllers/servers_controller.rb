@@ -25,6 +25,8 @@ class ServersController < ApplicationController
   # GET /servers/1/edit
   def edit
     @server = current_user.servers.find(params[:id])
+    @contact = current_user.contacts.new
+    # @server_id = params[:id].to_i
   end
 
   # POST /servers
