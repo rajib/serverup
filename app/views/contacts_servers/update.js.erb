@@ -1,5 +1,5 @@
 $("#form_search_contacts").each(function(){
-	this.reset();
+    this.reset();
 });
 $("#head_javascript").html("<%= escape_javascript(render partial: 'servers/head_javascript_content', locals: {server: @server}) %>");
 $("#already_added_contacts").html("<%= escape_javascript(render partial: 'servers/contacts', locals: {server: @server}) %>");
