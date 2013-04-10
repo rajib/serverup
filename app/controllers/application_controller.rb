@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers
 
+  layout Proc.new { |controller| controller.request.xhr? ? nil : 'application' }
+
   # For all responses in this controller, return the CORS access control headers.
 
   def cors_set_access_control_headers

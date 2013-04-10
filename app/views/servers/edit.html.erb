@@ -4,36 +4,10 @@
 
 <legend>Editing server</legend>
 
-<div id="two_forms">
-
-<div id="left_form" style="width: 300px;float: left;">
-<%= render 'form' %>
+<div id="left_form">
+  <%= render 'form' %>
 </div>
-<div id="right_form" style="margin-left: 60px;float: right">
-  <label for="contacts">Contacts: </label>
-  <%= form_tag server_contacts_servers_path(@server.id), method: :put, remote:true, class:'form-search', id:'form_search_contacts' do %>
-  <div class="input-append">
-    <input id="contact" data-provide="typeahead" autocomplete="off" class="span3 search-query" />
-    <%= submit_tag "Add", class:'btn btn-success', style:'height:24px;' %>
-  </div>
-  <% end %>
 
-  <%= link_to('New Contact', 'javascript:;', id:'new_contact_link') %>
-
-  <div id="new_contact_div" style="display:none" >
-    <%= simple_form_for @contact, url: server_contacts_servers_path(@server) ,remote: true do |f| %>
-    <%= f.input :name %>
-    <%= f.input :email %>
-    <%= f.submit "Add",class: "btn btn btn-success" %>
-    <% end %> 
-  </div>
-</div>  
-</div>
-<div id="already_added_contacts" style="margin-top: 300px">
+<div id="already_added_contacts">
    <%= render 'contacts' %>
-</div>  
-<br />
-
-
-
-
+</div> 
