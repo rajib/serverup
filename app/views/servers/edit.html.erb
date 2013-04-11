@@ -1,12 +1,40 @@
+<div class="widget-box">
+  <div class="widget-title">
+    <span class="icon">
+      <i class="icon-align-justify">
+      </i>
+      
+    </span>
+    <h5>
+      Edit Server
+    </h5>
+  </div>
+
+<%= render 'form' %>
+
+
 <div id="head_javascript"> 
    <%= render partial: "head_javascript_content" %>
 </div>
 
-<legend>Editing server</legend>
+<div class="widget-box">
+  <div class="widget-title">
+    <span class="icon">
+      <i class="icon-arrow-right"></i>
+    </span>
+    <h5>Add Contact</h5>
 
-<div id="left_form">
-  <%= render 'form' %>
-</div>
+  </div>
+  <div class="widget-content nopadding">
+    <div class="controls margin-top">
+        <%= form_tag server_contacts_servers_path(@server.id), method: :put, remote:true, class:'form-search', id:'form_search_contacts' do %>
+        <input type="text" id="contact" placeholder="Search Contacts" data-provide="typeahead" autocomplete="off" class="ui-autocomplete-input" />
+        <%= submit_tag "Add", class:'btn' %>
+    <% end %>         
+  </div>
+ </div> 
+</div>  
+
 
 <div id="already_added_contacts">
    <%= render 'contacts' %>
