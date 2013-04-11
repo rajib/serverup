@@ -48,3 +48,20 @@
 	top: 11px;
 	width: 191px;
 }
+
+.popover-visits {
+	width: 218px;
+}
+
+.stat-boxes, .quick-actions, .quick-actions-horizontal, .stats-plain {
+	text-align: left !important;
+}
+
+#content {
+	min-height: 730px !important;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+}
