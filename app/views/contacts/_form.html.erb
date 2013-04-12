@@ -1,5 +1,6 @@
   <div class="widget-content nopadding">
-    <%= simple_form_for(@contact) do |f| %>
+    <%= simple_form_for(@contact, remote:true) do |f| %>
+        <%= f.error_notification %>
 	    <%= f.input :name %>
 	    <%= f.input :email %>
       
