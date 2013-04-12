@@ -1,73 +1,83 @@
 <div class="widget-box">
-  <div class="widget-title">
-    <span class="icon">
-      <i class="icon-align-justify">
-      </i>
+    <div class="widget-title">
+        <span class="icon">
+            <i class="icon-align-justify">
+            </i>
       
-    </span>
-    <h5>
-      Edit Server
-    </h5>
-  </div>
-
-<%= render 'form' %>
-
-
-<div id="head_javascript"> 
-   <%= render partial: "head_javascript_content" %>
-</div>
-
-<div class="widget-box">
-  <div class="widget-title">
-    <span class="icon">
-      <i class="icon-arrow-right"></i>
-    </span>
-    <h5>Add Contact</h5>
-
-  </div>
-  <div class="widget-content nopadding">
-    <div class="controls margin_top" style="margin-top:10px; margin-bottom:10px; margin-left:10px;">
-        <%= form_tag server_contacts_servers_path(@server.id), method: :put, remote:true, class:'form-search', id:'form_search_contacts' do %>
-        <input type="text" id="contact" placeholder="Search Contacts" data-provide="typeahead" autocomplete="off" class="ui-autocomplete-input" />
-        <%= submit_tag "Add", class:'btn' %>
-    <% end %>         
-  </div>
- </div> 
-</div>  
-
-
-<div id="already_added_contacts">
-   <%= render 'contacts' %>
-</div> 
-
-<!-- Modal -->
-<div id="contactModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="contactModalLabel">Modal header</h3>
-  </div>
-  <div class="modal-body">
-<div class="widget-box">
-  <div class="widget-title">
-    <span class="icon">
-      <i class="icon-align-justify">
-      </i>
-      
-    </span>
-    <h5>
-      New Contact
-    </h5>
-  </div>
-
-  <div class="widget-content nopadding">
-    <%= simple_form_for @contact, url: server_contacts_servers_path(@server) ,remote: true do |f| %>
-      <%= f.input :name %>
-      <%= f.input :email %>
-      
-      <div class="form-actions">
-        <%= f.button :submit, class:'btn btn-primary' %>
-      </div>
-    <% end %>
-  </div>
-  </div>
-</div>  
+        </span>
+        <h5>
+            Edit Server
+        </h5>
+    </div>
+  
+    <%= render 'form' %>
+    
+    
+    <div id="head_javascript">
+        <%= render partial: "head_javascript_content" %>
+    </div>
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon">
+                <i class="icon-arrow-right">
+                </i>
+            </span>
+            <h5>
+                Add Contact
+            </h5>
+          
+        </div>
+        <div class="widget-content nopadding">
+            <div class="controls margin_top" style="margin-top:10px; margin-bottom:10px; margin-left:10px;">
+                <%= form_tag server_contacts_servers_path(@server.id), method: :put, remote:true, class:'form-search', id:'form_search_contacts' do %>
+                    <input type="text" id="contact" placeholder="Search Contacts" data-provide="typeahead" autocomplete="off" class="ui-autocomplete-input" />
+                    <%= submit_tag "Add", class:'btn' %>
+                <% end %>
+                  
+            </div>
+        </div>
+              
+     </div>
+            
+            
+            
+    <div id="already_added_contacts">
+        <%= render 'contacts' %>
+    </div>
+              
+              
+    <!-- Modal -->
+    <div id="contactModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+            </button>
+            <h3 id="contactModalLabel">
+                Modal header
+            </h3>
+        </div>
+        <div class="modal-body">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="icon-align-justify">
+                        </i>
+                        
+                    </span>
+                    <h5>
+                        New Contact
+                    </h5>
+                </div>
+                    
+                <div class="widget-content nopadding">
+                <%= simple_form_for @contact, url: server_contacts_servers_path(@server) ,remote: true do |f| %>
+                    <%= f.input :name %>
+                    <%= f.input :email %>
+                    <div class="form-actions">
+                        <%= f.button :submit, class:'btn btn-primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+                          

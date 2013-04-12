@@ -1,11 +1,12 @@
-  <div class="widget-content nopadding">
-    <%= simple_form_for(@server) do |f| %>
-	    <%= f.input :name %>
-	    <%= f.input :url %>
-      
-      <div class="form-actions">
-				<%= f.button :submit, class:'btn btn-primary' %>
-      </div>
+<div class="widget-content nopadding">
+	<%= simple_form_for(@server) do |f| %>
+    	<%= f.input :name %>
+      	<%= f.input :url %>
+        
+        <div class="form-actions">
+         	<%= f.button :submit, class:'btn btn-primary' %>
+        </div>
     <% end %>
-  </div>
-
+</div>
+          
+          

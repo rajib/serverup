@@ -1,34 +1,53 @@
 <% server = @server if @server.present? %>
 <div class="widget-box">
-  <div class="widget-title">
-    <span class="icon">
-      <i class="icon-th"></i>
-    </span>
-    <h5>Contacts</h5>
-    <div class="buttons"><%= link_to 'New Contact', 'javascript:;', class: "btn btn-mini", id:'new_contact_link', 'data-toggle' => "modal", 'data-target' => "#contactModal" %></div>
-  </div>
-  <div class="widget-content nopadding">
-    <table id="table_already_added_contacts" class="table table-striped table-hover">
-      <thead> 
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody> 
-      <% contacts_added = server.contacts.reverse %>
-      <% contacts_added.each do |contact| %>
-        <tr>
-          <td><%= contact.name %></td>
-          <td><%= contact.email %></td>
-          <td><%= link_to 'Delete', server_contacts_server_path(server, contact), confirm:'Are you sure?', method: :delete, remote: true %></td>
-        </tr> 
-        <% end %>
-      <tbody>
-    </table>           
-  </div>
+    <div class="widget-title">
+        <span class="icon">
+            <i class="icon-th">
+            </i>
+        </span>
+        <h5>Contacts</h5>
+        <div class="buttons">
+            <%= link_to 'New Contact', 'javascript:;', class: "btn btn-mini", id:'new_contact_link', 'data-toggle' =>"modal", 'data-target' =>"#contactModal" %>
+        </div>
+    </div>
+    <div class="widget-content nopadding">
+        <table id="table_already_added_contacts" class="table table-striped table-hover">
+            <thead>
+            
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+        <tbody>
+            
+            <% contacts_added = server.contacts.reverse %>
+            <% contacts_added.each do |contact| %>
+                <tr>
+                    <td>
+                        <%= contact.name %>
+                    </td>
+                    <td>
+                        <%= contact.email %>
+                    </td>
+                    <td>
+                        <%= link_to 'Delete', server_contacts_server_path(server, contact), confirm:'Are you sure?', method: :delete, remote: true %>
+                    </td>
+                </tr>
+                
+                <% end %>
+            <tbody>
+        </table>
+                
+    </div>
 </div>
-
-
-
+            
+            
+            
+            

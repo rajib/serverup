@@ -1,13 +1,19 @@
 <div class="widget-box">
-  <div class="widget-title">
-    <span class="icon">
-      <i class="icon-th"></i>
-    </span>
-    <h5>Contacts</h5>
-    <div class="buttons"><%= link_to 'New Contact', new_contact_path, class: "btn btn-mini", 'data-toggle' => "modal", 'data-target' => "#contactModal" %></div>
-  </div>
-<div id="all_contacts">
-   <%= render 'contacts' %>
-</div> 
+    <div class="widget-title">
+        <span class="icon">
+            <i class="icon-th">
+            </i>
+        </span>
+        <h5>
+            Contacts
+        </h5>
+        <div class="buttons">
+            <%= link_to 'New Contact', new_contact_path, class: "btn btn-mini", 'data-toggle' =>"modal", 'data-target' =>"#contactModal" %>
+        </div>
+    </div>
+    <div id="all_contacts">
+        <%= render 'contacts' %>
+    </div>
 </div>
-
+    
+    
