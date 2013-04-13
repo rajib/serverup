@@ -5,7 +5,8 @@ class Contact < ActiveRecord::Base
   attr_accessible :email, :name
   attr_accessible :email, :name, :user_id
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, :format => { :with => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
+    :message => "Invalid Email" }
 
   def self.populate_contacts(current_user, server_id)
     server = Server.find server_id

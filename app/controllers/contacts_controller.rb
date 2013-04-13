@@ -30,17 +30,19 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    if params[:status] == "ajax_call"
+    
       @contact = current_user.contacts.new(name:params[:name], email:params[:email])
-    else
       @contact = current_user.contacts.new(params[:contact])
-    end
-       @server_id = params[:server_id].to_i
+      @server_id = params[:server_id].to_i
        if @contact.save
-
+         @contacts = current_user.contacts.all.reverse
          respond_to do |format|
            format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
            format.js
+         end
+       else
+         respond_to do |format|
+           format.js { render json: @contact.errors, status: :unprocessable_entity }
          end
       end
     
@@ -51,8 +53,13 @@ class ContactsController < ApplicationController
   def update
     @contact = current_user.contacts.find(params[:id])
 
+
       if @contact.update_attributes(params[:contact])
-        redirect_to @contact, notice: 'Contact was successfully updated.'
+         @contacts = current_user.contacts.all.reverse
+         respond_to do |format|
+           format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
+           format.js
+         end        
       else
         render action: "edit"
       end
@@ -64,6 +71,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact = current_user.contacts.find(params[:id])
     @contact.destroy
+    @contacts = current_user.contacts.all.reverse
 
     @server_id = params[:server_id].to_i
     if @server_id

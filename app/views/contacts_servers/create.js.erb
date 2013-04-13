@@ -1,9 +1,11 @@
-$("#new_contact").each(function(){
+$("#contactModal").modal('hide');
+$("#new_contact").each(function () {
     this.reset();
 });
 $("#already_added_contacts").html("<%= escape_javascript(render partial: 'servers/contacts', locals: {server: @server}) %>");
 $('#table_already_added_contacts').dataTable({
-         "sDom": "<'row'<'span12'f>r>t<'row'<'span12'p>>",
-         "sPaginationType": "bootstrap",
-         "aaSorting": []
+    "bJQueryUI": true,
+    "sPaginationType": "full_numbers",
+    "sDom": '<"">t<"F"fp>',
+    "aaSorting": []
 });

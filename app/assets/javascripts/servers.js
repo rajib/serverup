@@ -1,9 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-        $('#table_already_added_contacts').dataTable({
-         "sDom": "<'row'<'span12'f>r>t<'row'<'span12'p>>",
-         "sPaginationType": "bootstrap",
-         "aaSorting": []
-        });
+    $('#table_already_added_contacts').dataTable({
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers",
+        "sDom": '<"">t<"F"fp>',
+        "aaSorting": []
+    });
 
-} );
+});

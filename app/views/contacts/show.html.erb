@@ -1,15 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @contact.name %>
+<p id="notice">
+    <%= notice %>
 </p>
-
 <p>
-  <b>Email:</b>
-  <%= @contact.email %>
+    <b>
+        Name:
+    </b>
+    <%= @contact.name %>
 </p>
-
-
+<p>
+    <b>
+        Email:
+    </b>
+        <%= @contact.email %>
+</p>
 <%= link_to 'Edit', edit_contact_path(@contact), class:'btn btn-success' %>
-
+        
+        

@@ -7,10 +7,11 @@ class ContactsServersController < ApplicationController
     if @contact.save
       @server.contacts << @contact
       @server.save
+      respond_to do |format|
+         format.js 
+      end      
     end
-    respond_to do |format|
-       format.js 
-    end
+
   end
 
   def destroy
