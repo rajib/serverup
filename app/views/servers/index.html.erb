@@ -1,23 +1,37 @@
-<div class="row-fluid">
-  <div class="span12 center" style="text-align: center;">         
-    <ul class="stat-boxes">
-      <% @servers.each do |server| %>
-      <li class="popover-visits" data-original-title="" title="">
-        <div class="left">
-          <span>
-            <%= colourize_status server.status %>
-          </span>
-            <%= link_to server, title: "show" do %><i class="icon-road"></i><% end %>
-            <%= link_to edit_server_path(server), title: "edit" do %><i class="icon-edit"></i><% end %>
-            <%= link_to server, method: :delete, data: { confirm: 'Are you sure?' }, title: "destroy" do %><i class="icon-trash"></i><% end %>
-        </div>
-        <div class="right">
-          <nobr><%= link_to server.name, server.full_uri, title: server.full_uri %></nobr>
-        </br>
-          <nobr><%= "#{distance_of_time_in_words_to_now(server.updated_at)} ago" %></nobr>
-        </div>
-      </li>
+<div class="widget-box">
+  <div class="widget-title">
+    <span class="icon">
+      <i class="icon-th-list"></i>
+    </span>
+    <h5>Current Status</h5>
+    <div class="buttons">
+      <%= link_to root_path, class: 'btn btn-mini',  title: "Update stats" do %>
+        <i class="icon-refresh"></i>
       <% end %>
-    </ul>
-  </div>  
+      <%= link_to new_server_path, class: 'btn btn-mini',  title: "Add new server" do %>
+        <i class="icon-plus-sign"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="widget-content">
+  <ul class="stat-boxes">
+    <% @servers.each do |server| %>
+    <li class="popover-visits" data-original-title="" title="">
+      <div class="left">
+        <span>
+          <%= colourize_status server.status %>
+        </span>
+          <%= link_to server, title: "show" do %><i class="icon-road"></i><% end %>
+          <%= link_to edit_server_path(server), title: "edit" do %><i class="icon-edit"></i><% end %>
+          <%= link_to server, method: :delete, data: { confirm: 'Are you sure?' }, title: "destroy" do %><i class="icon-trash"></i><% end %>
+      </div>
+      <div class="right">
+        <nobr><%= link_to server.name, server.full_uri, title: server.full_uri %></nobr>
+      </br>
+        <nobr class="last-updated-at"><%= "#{distance_of_time_in_words_to_now(server.updated_at)} ago" %></nobr>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+  </div>
 </div>
