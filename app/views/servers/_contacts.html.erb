@@ -37,7 +37,9 @@
                         <%= contact.email %>
                     </td>
                     <td>
-                        <%= link_to 'Delete', server_contacts_server_path(server, contact), confirm:'Are you sure?', method: :delete, remote: true %>
+                      <%= link_to server_contacts_server_path(server, contact), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, title: "destroy" do %>
+                        <i class="icon-trash"></i>
+                      <% end %>
                     </td>
                 </tr>
                 
@@ -46,8 +48,4 @@
         </table>
                 
     </div>
-</div>
-            
-            
-            
-            
+</div>                
