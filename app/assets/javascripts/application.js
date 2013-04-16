@@ -24,6 +24,11 @@ $(function () {
 		"sPaginationType": "full_numbers",
 		"sDom": '<"">t<"F"fp>'
 	});
+
+	// reset modal
+	$('#contactModal').on('hidden', function() {
+	    $(this).data('modal').$element.removeData();
+	})	
 });
 
 	/* Default class modification */

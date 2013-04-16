@@ -30,22 +30,10 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    
-      @contact = current_user.contacts.new(name:params[:name], email:params[:email])
-      @contact = current_user.contacts.new(params[:contact])
-      @server_id = params[:server_id].to_i
-       if @contact.save
-         @contacts = current_user.contacts.all.reverse
-         respond_to do |format|
-           format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
-           format.js
-         end
-       else
-         respond_to do |format|
-           format.js { render json: @contact.errors, status: :unprocessable_entity }
-         end
-      end
-    
+    @contact = current_user.contacts.new(name:params[:name], email:params[:email])
+    @contact = current_user.contacts.new(params[:contact])
+    @server_id = params[:server_id].to_i
+    @contact.save
   end
 
   # PUT /contacts/1
