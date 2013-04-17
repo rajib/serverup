@@ -1,5 +1,97 @@
-<p>Welcome <%= @resource.email %>!</p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%=  Rails.application.class.to_s.split("::").first.gsub!('Rails','') %> - Registration</title>
+</head>
 
-<p>You can confirm your account email through the link below:</p>
+<body>
+<table width="556" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="22" align="left" valign="top"></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="left" valign="top"><%= image_tag "logo.png", width: "121", height: "32", alt: "" %></td>
+        <td align="right" valign="top"><h1 style="color:#464646; font-size:18px; font-weight:normal; line-height:32px; padding:0; margin:0;">Registration</h1></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="21" align="left" valign="top" style="border-bottom:#B9E1A1 4px solid"></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="20" align="left" valign="top"></td>
+        <td align="left" valign="top"><h2 style="color:#464646; font-size:14px; padding:0; margin:0; font-weight:normal; line-height:44px;">Hello,<span style="color:#3BB000;"></span></h2></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="background-color:#F1F8E9;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="20" align="left" valign="top"></td>
+        <td width="516" align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="15" align="left" valign="top"></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><p style="color:#464646; font-size:14px; line-height:18px; padding:0; margin:0;">Welcome to <span style="color:#3BB000; font-size:14px; line-height:18px; padding:0; margin:0;">Serverup- your server status monitor</span></p></td>
+          </tr>
+          <tr>
+            <td height="15" align="left" valign="top"></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><p style="color:#464646; font-size:14px; line-height:18px; padding:0; margin:0;">To start using Serverup, you will need to verify your identity by clicking <%= link_to 'here.', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="left" valign="top">
+              <p style="color:#464646; font-size:14px; line-height:18px; padding:0; margin:0;">
+                Serverup is currently in Beta and we eagerly look forward to hearing what you have to say. The simplest way to send us feedback is to use the feedback link that you ll find at the right of every page on Serverup.</p>
+            </td>
+          </tr>
+          <tr>
+            <td align="left" valign="top">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="left" valign="top">
+              <p style="color:#3BB000; font-size:14px; line-height:18px; padding:0; margin:0;">Please do not reply to this email; replies are not monitored.</p>
+            </td>
+          </tr>
+          <tr>
+            <td height="15" align="left" valign="top"></td>
+          </tr>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+          <tr>
+            <td height="15" align="left" valign="top"></td>
+          </tr>
+        </table></td>
+        <td width="20" align="left" valign="top"></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="12" align="left" valign="top" style="border-top:#B9E1A1 1px solid"></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="20" align="left" valign="top"></td>
+        <td align="left" valign="top"><p style="color:#464646; font-size:14px; line-height:18px; padding:0; margin:0;">Sincerely,<br />
+          <span style="color:#3BB000;">The Serverup Team.</span></p></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="21" align="left" valign="top" style="border-bottom:#B9E1A1 4px solid"></td>
+  </tr>
+  
+</table>
+
+</body>
+</html>
