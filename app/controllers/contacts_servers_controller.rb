@@ -4,23 +4,17 @@ class ContactsServersController < ApplicationController
   def create
     @server = Server.find(params[:server_id])
     @contact = current_user.contacts.new(params[:contact])
-    if @contact.save
-      @server.contacts << @contact
-      @server.save
-      respond_to do |format|
-         format.js 
-      end      
-    end
+     if @contact.save
+       @server.contacts << @contact
+       @server.save    
+     end
 
   end
 
   def destroy
-   @server = Server.find(params[:server_id]) 
-   @contactsserver = ContactsServer.find_by_server_id_and_contact_id(params[:server_id],params[:id])
-   @contactsserver.destroy
-   respond_to do |f|
-      f.js
-   end
+    @server = Server.find(params[:server_id]) 
+    @contactsserver = ContactsServer.find_by_server_id_and_contact_id(params[:server_id],params[:id])
+    @contactsserver.destroy
   end
 
   def update
