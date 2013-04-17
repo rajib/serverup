@@ -44,7 +44,7 @@
                 ×
             </button>
             <h3 id="contactModalLabel">
-                Modal header
+                New Contact
             </h3>
         </div>
         <div class="modal-body">
@@ -56,14 +56,11 @@
                 </div>
                     
                 <div class="widget-content nopadding">
-                <%= simple_form_for @contact, url: server_contacts_servers_path(@server) ,remote: true do |f| %>
-                    <%= f.input :name %>
-                    <%= f.input :email %>
-                    <div class="form-actions">
-                        <%= f.button :submit, class:'btn btn-primary' %>
-                    </div>
-                <% end %>
+                <div id="contactDynamicContent">    
+                    <%= render 'form2' %>
+                </div>
             </div>
-        </div>
+        
     </div>
+</div>    
                           

@@ -4,9 +4,9 @@
             Contacts
         </h5>
         <div class="buttons">
-          <%= link_to '#', class: 'btn btn-mini btn-success',  title: "add new contact", 'data-toggle' =>"modal", 'data-target' =>"#contactModal" do %>
+            <%= link_to 'New Contact', new_contact_path, class: "btn btn-mini new_contact", 'data-toggle' =>"modal", 'data-title' => "New Contact" ,'data-target' =>"#contactModal" do %>
             <i class="icon-plus-sign icon-white"></i> Add New Contact
-          <% end %>            
+            <% end %> 
         </div>
     </div>
     <div id="all_contacts">
