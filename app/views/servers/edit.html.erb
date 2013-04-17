@@ -1,10 +1,5 @@
 <div class="widget-box">
     <div class="widget-title">
-        <span class="icon">
-            <i class="icon-align-justify">
-            </i>
-      
-        </span>
         <h5>
             Edit Server
         </h5>
@@ -18,10 +13,6 @@
     </div>
     <div class="widget-box">
         <div class="widget-title">
-            <span class="icon">
-                <i class="icon-arrow-right">
-                </i>
-            </span>
             <h5>
                 Add Contact
             </h5>
@@ -31,7 +22,7 @@
             <div class="controls margin_top" style="margin-top:10px; margin-bottom:10px; margin-left:10px;">
                 <%= form_tag server_contacts_servers_path(@server.id), method: :put, remote:true, class:'form-search', id:'form_search_contacts' do %>
                     <input type="text" id="contact" placeholder="Search Contacts" data-provide="typeahead" autocomplete="off" class="ui-autocomplete-input" />
-                    <%= submit_tag "Add", class:'btn' %>
+                    <%= submit_tag "Add", class:'btn btn-primary' %>
                 <% end %>
                   
             </div>
@@ -59,11 +50,6 @@
         <div class="modal-body">
             <div class="widget-box">
                 <div class="widget-title">
-                    <span class="icon">
-                        <i class="icon-align-justify">
-                        </i>
-                        
-                    </span>
                     <h5>
                         New Contact
                     </h5>

@@ -5,21 +5,18 @@ class ServersController < ApplicationController
   # GET /servers.json
   def index
     @servers = current_user.servers
-
   end
 
   # GET /servers/1
   # GET /servers/1.json
   def show
     @server = current_user.servers.find(params[:id])
-
   end
 
   # GET /servers/new
   # GET /servers/new.json
   def new
     @server = current_user.servers.new
-
   end
 
   # GET /servers/1/edit
@@ -35,7 +32,7 @@ class ServersController < ApplicationController
     @server = current_user.servers.new(params[:server])
 
       if @server.save
-        redirect_to @server, notice: 'Server was successfully created.'
+        redirect_to servers_path, notice: 'A new Server was successfully created.'
       else
         render action: "new"
       end

@@ -1,7 +1,7 @@
 class Server < ActiveRecord::Base
   attr_accessible :name, :status, :url
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 3, maximum: 25 }
   validates :url, presence: true, 
             format: { :with => /^(http|https):\/\/([a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}|(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}|localhost)(:[0-9]{1,5})?(\/.*)?$/ix }
 

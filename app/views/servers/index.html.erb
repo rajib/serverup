@@ -1,15 +1,15 @@
 <div class="widget-box">
   <div class="widget-title">
-    <span class="icon">
+<!--     <span class="icon">
       <i class="icon-th-list"></i>
-    </span>
-    <h5>Current Status</h5>
+    </span> -->
+    <h5>Servers Current Status</h5>
     <div class="buttons">
-      <%= link_to root_path, class: 'btn btn-mini',  title: "Update stats" do %>
-        <i class="icon-refresh"></i>
+      <%= link_to root_path, class: 'btn btn-mini btn-info',  title: "refresh" do %>
+        <i class="icon-refresh icon-white"></i> Refresh
       <% end %>
-      <%= link_to new_server_path, class: 'btn btn-mini',  title: "Add new server" do %>
-        <i class="icon-plus-sign"></i>
+      <%= link_to new_server_path, class: 'btn btn-mini btn-success',  title: "add new server" do %>
+        <i class="icon-plus-sign icon-white"></i> Add New Server
       <% end %>
     </div>
   </div>
@@ -21,12 +21,12 @@
         <span>
           <%= colourize_status server.status %>
         </span>
-          <%= link_to server, title: "show" do %><i class="icon-road"></i><% end %>
-          <%= link_to edit_server_path(server), title: "edit" do %><i class="icon-edit"></i><% end %>
+          <!-- <%#= link_to server, title: "show" do %><i class="icon-road"></i><%# end %> -->
+          <%= link_to edit_server_path(server), title: "edit" do %><i class="icon-pencil"></i><% end %>
           <%= link_to server, method: :delete, data: { confirm: 'Are you sure?' }, title: "destroy" do %><i class="icon-trash"></i><% end %>
       </div>
       <div class="right">
-        <nobr><%= link_to server.name, server.full_uri, title: server.full_uri %></nobr>
+        <nobr><%= link_to truncate(server.name, length: 25), server.full_uri, title: server.full_uri, target: '_blank' %></nobr>
       </br>
         <nobr class="last-updated-at"><%= "#{distance_of_time_in_words_to_now(server.updated_at)} ago" %></nobr>
       </div>

@@ -1,13 +1,11 @@
 <% server = @server if @server.present? %>
 <div class="widget-box">
     <div class="widget-title">
-        <span class="icon">
-            <i class="icon-th">
-            </i>
-        </span>
         <h5>Contacts</h5>
         <div class="buttons">
-            <%= link_to 'New Contact', 'javascript:;', class: "btn btn-mini", id:'new_contact_link', 'data-toggle' =>"modal", 'data-target' =>"#contactModal" %>
+          <%= link_to '#', class: 'btn btn-mini btn-success',  title: "add new contact", id:'new_contact_link', 'data-toggle' =>"modal", 'data-target' =>"#contactModal" do %>
+            <i class="icon-plus-sign icon-white"></i> Add New Contact
+          <% end %>
         </div>
     </div>
     <div class="widget-content nopadding">

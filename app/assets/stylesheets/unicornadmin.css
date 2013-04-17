@@ -571,6 +571,7 @@ a:hover {
     padding: 10px 14px 6px 4px;
     font-size: 10px;
     font-weight: bold;
+    min-width: 39px;
 }
 
 .stat-boxes .right {
