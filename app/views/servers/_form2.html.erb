@@ -1,0 +1,7 @@
+<%= simple_form_for @contact, url: server_contacts_servers_path(@server) ,remote: true do |f| %>
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <div class="form-actions">
+        <%= f.button :submit, class:'btn btn-primary' %>
+    </div>
+<% end %>
