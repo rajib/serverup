@@ -25,7 +25,7 @@
                         <%= contact.email %>
                     </td>
                     <td>
-                        <%= link_to edit_contact_path(contact), 'data-toggle' =>"modal", 'data-target' =>"#contactModal", title: "edit" do  %>
+                        <%= link_to edit_contact_path(contact), 'data-toggle' =>"modal", 'data-target' =>"#contactModal", title: "edit", class: "edit_contact", 'data-title' => "Edit Contact" do  %>
                         <i class="icon-edit">
                         </i>
                         <% end %>

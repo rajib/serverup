@@ -28,8 +28,19 @@ $(function () {
 	// reset modal
 	$('#contactModal').on('hidden', function() {
 	    $(this).data('modal').$element.removeData();
-	})	
+	})
+
+	$('.new_contact').on('click',function(){
+		$('#contactModalLabel').html($(this).attr('data-title'));
+	});	
+	
+	$('.edit_contact').on('click',function(){
+		$('#contactModalLabel').html($(this).attr('data-title'));
+	});	
 });
+
+
+
 
 	/* Default class modification */
 			$.extend( $.fn.dataTableExt.oStdClasses, {

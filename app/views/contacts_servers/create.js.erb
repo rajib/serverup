@@ -1,11 +1,15 @@
-$("#contactModal").modal('hide');
-$("#new_contact").each(function () {
-    this.reset();
-});
-$("#already_added_contacts").html("<%= escape_javascript(render partial: 'servers/contacts', locals: {server: @server}) %>");
-$('#table_already_added_contacts').dataTable({
-    "bJQueryUI": true,
-    "sPaginationType": "full_numbers",
-    "sDom": '<"">t<"F"fp>',
-    "aaSorting": []
-});
+<% if @contact && @contact.errors.any? -%>
+	$("#contactDynamicContent").html(
+		"<%= escape_javascript( render(:partial => "servers/form2", :locals => {:@contact => @contact}) ) %>"
+		);
+<% else %>
+	<% @contacts = current_user.contacts.all.reverse %>
+	$("#contactModal").modal('hide');
+	$("#already_added_contacts").html("<%= escape_javascript(render partial: 'contacts/contacts', locals: {contacts: @contacts}) %>");
+	$('#table_already_added_contacts').dataTable({
+	    "bJQueryUI": true,
+	    "sPaginationType": "full_numbers",
+	    "sDom": '<"">t<"F"fp>',
+	    "aaSorting": []
+	});	
+<% end %>

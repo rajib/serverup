@@ -40,18 +40,7 @@ class ContactsController < ApplicationController
   # PUT /contacts/1.json
   def update
     @contact = current_user.contacts.find(params[:id])
-
-
-      if @contact.update_attributes(params[:contact])
-         @contacts = current_user.contacts.all.reverse
-         respond_to do |format|
-           format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
-           format.js
-         end        
-      else
-        render action: "edit"
-      end
-    
+    @contact.update_attributes(params[:contact])
   end
 
   # DELETE /contacts/1
